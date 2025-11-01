@@ -1,10 +1,10 @@
 import {Router} from 'express'
 import rateLimit from 'express-rate-limit'
-import {agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos} from '../controllers/alumnos.controller'
-import {agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos} from '../controllers/casinos.controller'
-import {canjeAlumno, verCanjeRut} from '../controllers/canjes.controller'
-import {loginUsuario, agregarUsuario, verUsuarios, borrarUsuario, verUsuarioId, loginValidation, registerValidation} from '../controllers/login.controller'
-import { checkToken, checkUser} from '../middlewares/auth'
+import {agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos} from '../controllers/alumnos.controller.js'
+import {agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos} from '../controllers/casinos.controller.js'
+import {canjeAlumno, verCanjeRut} from '../controllers/canjes.controller.js'
+import {loginUsuario, agregarUsuario, verUsuarios, borrarUsuario, verUsuarioId, loginValidation, registerValidation} from '../controllers/login.controller.js'
+import { checkToken, checkUser} from '../middlewares/auth.js'
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

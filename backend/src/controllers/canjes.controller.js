@@ -1,4 +1,4 @@
-import {getConnection, sql} from '../database/connection'
+import {getConnection, sql} from '../database/connection.js'
 
 // Peticiones Canje de beca
 export const verCanjeRut = async (req, res) => {

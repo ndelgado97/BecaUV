@@ -1,4 +1,4 @@
-import {getConnection, sql} from '../database/connection'
+import {getConnection, sql} from '../database/connection.js'
 
 // Peticiones Alumnos
 export const verAlumnos = async (req, res) => {

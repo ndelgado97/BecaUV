@@ -1,5 +1,5 @@
 import { getConnection, sql } from '../database/connection.js';
-import { hashPassword, verifyPassword } from '../middlewares/hash';
+import { hashPassword, verifyPassword } from '../middlewares/hash.js';
 import { createToken } from '../middlewares/auth.js';
 import { body, validationResult } from 'express-validator';
 
