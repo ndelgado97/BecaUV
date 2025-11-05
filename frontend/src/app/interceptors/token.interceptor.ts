@@ -20,7 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
     console.log('Interceptando petición a:', request.url);
     
     // No añadir token para la ruta de login
-    if (request.url.includes('/api/login')) {
+    if (request.url.includes('api/login')) {
       return next.handle(request).pipe(
         catchError(this.handleError.bind(this))
       );

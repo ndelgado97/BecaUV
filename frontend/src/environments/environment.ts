@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   /* backend: 'http://backend_becasuv:4000' */
   backend: 'https://becauv-production-393b.up.railway.app/'
 };
