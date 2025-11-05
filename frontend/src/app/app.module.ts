@@ -1,45 +1,30 @@
+// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-
-// Angular Material usados en el login
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
-// Interceptor
+// Importa el interceptor
 import { TokenInterceptor } from './interceptors/token.interceptor';
-
-// Componentes
-import { VerLoginComponent } from './pages/auth/ver-login/ver-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VerLoginComponent
+    // Otros componentes...
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    MatSnackBarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule
+    // Otros módulos...
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    // Registra el interceptor
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    // Otros servicios...
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

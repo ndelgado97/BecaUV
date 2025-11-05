@@ -1,35 +1,24 @@
-<form class="login-wrapper" [formGroup]="form" (ngSubmit)="ingresar()">
-  <h2>Iniciar sesión</h2>
-
-  <mat-form-field appearance="fill" class="w100">
-    <mat-label>Usuario</mat-label>
-    <input matInput formControlName="usuario" autocomplete="username" required />
-    <mat-error *ngIf="form.get('usuario')?.hasError('required')">
-      Usuario es requerido
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="w100">
-    <mat-label>Contraseña</mat-label>
-    <input
-      matInput
-      [type]="hide ? 'password' : 'text'"
-      formControlName="password"
-      autocomplete="current-password"
-      required
-    />
-    <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Toggle password visibility'">
-      <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
-    </button>
-    <mat-error *ngIf="form.get('password')?.hasError('required')">
-      Contraseña es requerida
-    </mat-error>
-    <mat-error *ngIf="form.get('password')?.hasError('minlength')">
-      Debe tener al menos 8 caracteres
-    </mat-error>
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" class="w100" type="submit" [disabled]="form.invalid || loading">
-    {{ loading ? 'Ingresando…' : 'Ingresar' }}
-  </button>
-</form>
+<div class="body">
+    <div class="login">
+        <mat-card *ngIf="!loading">
+            <form [formGroup]="form" (ngSubmit)="ingresar()">
+                <h1>Iniciar sesión</h1>
+                <br>
+                <img src="assets/img/login.png" style="width: 30%; background-color: black; border-radius: 50px;">
+                <br>
+                <br>
+                <mat-form-field appearance="fill" style="width: 80%;">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput formControlName="usuario">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="width: 80%;">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-raised-button color="primary" style="height: 50px; width: 80%; background-color: #04549c;">Ingresar</button>
+            </form>
+        </mat-card>
+        <mat-spinner *ngIf="loading" class="loading" diameter="60"></mat-spinner>
+    </div>
+</div>
