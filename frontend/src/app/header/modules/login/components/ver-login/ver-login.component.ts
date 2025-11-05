@@ -29,6 +29,7 @@ export class VerLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   ingresar() {
+    console.log('Se presiona ingresar')
     if (this.form.valid) {
       const credentials = this.form.value;
       //console.log('Intentando login con:', credentials);
