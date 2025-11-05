@@ -11,8 +11,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { LoginRoutingModule } from './login-routing.module';
-
-// ajusta las rutas si difieren
 import { LoginComponent } from './login.component';
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { LoginContainerComponent } from './containers/login-container/login-container.component';
@@ -29,8 +27,6 @@ import { VerLoginComponent } from './components/ver-login/ver-login.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
-    // Material necesarios por tu template
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -38,15 +34,7 @@ import { VerLoginComponent } from './components/ver-login/ver-login.component';
     MatCardModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-
     LoginRoutingModule
-  ],
-  // exporta si otro módulo usa estos componentes
-  exports: [
-    LoginComponent,
-    LoginScreenComponent,
-    LoginContainerComponent,
-    VerLoginComponent
   ]
 })
 export class LoginModule {}

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 
 const routes: Routes = [
-  { path: '', component: LoginScreenComponent } // /login apunta a esta screen
+  { path: '', component: LoginScreenComponent } // <-- /login renderiza esta pantalla
 ];
 
 @NgModule({
