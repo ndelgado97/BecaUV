@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../../../services/login/login.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-ver-login',
@@ -13,10 +12,11 @@ import { LoginService } from '../../../../../services/login/login.service';
 export class VerLoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
+  hide = true; // para mostrar/ocultar password
 
   constructor(
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
+    private snack: MatSnackBar,
     private router: Router,
     private loginService: LoginService
   ) {
@@ -29,46 +29,39 @@ export class VerLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   ingresar() {
-    console.log('Se presiona ingresar')
-    if (this.form.valid) {
-      const credentials = this.form.value;
-      //console.log('Intentando login con:', credentials);
-      
-      // En ver-login.component.ts - función ingresar
-
-      this.loginService.loginUser(credentials).subscribe({
-        next: (response: any) => {
-          //console.log('Respuesta del servidor:', response);
-          if (response.success) {
-            // Guardar el token correctamente
-            localStorage.setItem('token_login', response.token);
-            localStorage.setItem('role', response.usuario.role);
-            this.isLoading();
-          } else {
-            this.error('Credenciales inválidas');
-          }
-        },
-        error: (err) => {
-          console.error('Error en login:', err);
-          this.error();
-        }
-      });
+    console.log('Se presiona ingresar', this.form.value, 'valid?', this.form.valid);
+    if (this.form.invalid) {
+      this.error('Formulario inválido');
+      return;
     }
+
+    this.loading = true;
+
+    this.loginService.loginUser(this.form.value as any).subscribe({
+      next: (response: any) => {
+        console.log('Respuesta login:', response);
+        if (response?.success) {
+          localStorage.setItem('token_login', response.token);
+          localStorage.setItem('role', response.usuario?.role || '');
+          this.router.navigate(['/']); // ajusta destino
+        } else {
+          this.error('Credenciales inválidas');
+        }
+      },
+      error: (err) => {
+        console.error('Error HTTP login:', err);
+        const msg = err?.error?.message || 'Usuario o contraseña inválida';
+        this.error(msg);
+      },
+      complete: () => (this.loading = false)
+    });
   }
 
-  error(message: string = 'Usuario o contraseña inválida') {
-    this._snackBar.open(message, 'Cerrar', {
+  error(message: string) {
+    this.snack.open(message, 'Cerrar', {
       duration: 4000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
     });
-  }
-
-  isLoading() {
-    this.loading = true;
-    setTimeout(() => {
-      this.router.navigate(['/']);
-      this.loading = false;
-    }, 2000);
   }
 }
