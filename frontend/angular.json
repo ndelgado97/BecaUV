@@ -17,9 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/becauv/browser",
+            "outputPath": "dist/frontend",
             "index": "src/index.html",
-            "baseHref": "/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -110,8 +109,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "55fb02dc-69b0-4daf-ab81-556cea207024"
   }
 }
