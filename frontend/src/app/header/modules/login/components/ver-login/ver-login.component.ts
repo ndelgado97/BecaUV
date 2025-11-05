@@ -22,7 +22,7 @@ export class VerLoginComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
