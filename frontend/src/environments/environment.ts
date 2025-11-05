@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   /* backend: 'http://backend_becasuv:4000' */
-  backend: 'becauv-production-393b.up.railway.app/'
+  backend: 'https://becauv-production-393b.up.railway.app'
 };
 
 /*
