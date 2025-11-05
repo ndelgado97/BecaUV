@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 // Middlewares
 app.use(cors({
     /* origin: 'http://frontend_becasuv:80', */
-    origin: 'https://becauv-production.up.railway.app',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
