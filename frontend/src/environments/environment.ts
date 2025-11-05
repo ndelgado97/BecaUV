@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   /* backend: 'http://backend_becasuv:4000' */
-  backend: 'http://api.becas-informatica.uv.cl'
+  backend: 'becauv-production-393b.up.railway.app'
 };
 
 /*
