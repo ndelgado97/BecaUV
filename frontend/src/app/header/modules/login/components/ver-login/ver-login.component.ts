@@ -26,7 +26,10 @@ export class VerLoginComponent implements OnInit {
     });
   }
 
-
+  ngOnInit(): void {
+    console.log('API URL:', (this.loginService as any).apiUrl);
+    this.form.statusChanges.subscribe(s => console.log('formStatus:', s, this.form.value));
+  }
 
   ingresar() {
     console.log('submit', this.form.valid, this.form.value);
