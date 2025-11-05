@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl = environment.backend + '/api/login';
+  apiUrl = environment.backend + 'api/login';
 
   constructor(private http: HttpClient) { }
 
