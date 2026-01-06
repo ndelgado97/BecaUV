@@ -19,7 +19,7 @@ export class AgregarCasinosComponent implements OnInit {
     private fb: FormBuilder
   ) {
       this.form = this.fb.group({
-        nombre: ['', [Validators.required, Validators.minLength(45)]]
+        nombre: ['', [Validators.required, Validators.maxLength(45)]]
       });
     }
 
