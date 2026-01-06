@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CasinoService } from '../../../../../services/casinos/casinos.service'
@@ -10,12 +10,18 @@ import { CasinoService } from '../../../../../services/casinos/casinos.service'
   styleUrls: ['./agregar-casinos.component.scss']
 })
 export class AgregarCasinosComponent implements OnInit {
+  form: FormGroup;
 
   constructor(
     public casinoService: CasinoService,
     private router: Router,
-    private _snackBar: MatSnackBar
-  ) { }
+    private _snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {
+      this.form = this.fb.group({
+        nombre: ['', [Validators.required, Validators.minLength(45)]]
+      });
+    }
 
   ngOnInit(): void {
   }
